@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelatto & Açaí — açaí, sorvetes, milk-shakes e sobremesas geladas</title>
+<meta name="description" content="Açaí, sorvetes, milk-shakes e sobremesas geladas em São José do Rio Preto - SP. Peça pelo WhatsApp, retirada ou entrega.">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roxo:#5b2d8e; --roxo-claro:#8b5cf6; --rosa:#e8508d; --creme:#fff8f1;
+  --texto:#2b1b3d; --suave:#6b5b7b; --borda:#efe3f6; --branco:#fff;
+  --sombra:0 10px 30px rgba(91,45,142,.12); --raio:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--texto);background:var(--creme);line-height:1.6}
+h1,h2,h3,.logo{font-family:'Baloo 2',cursive}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1150px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-weight:700;
+  padding:13px 24px;border-radius:999px;font-size:15px;transition:.2s;font-family:inherit}
+.btn-p{background:linear-gradient(135deg,var(--roxo),var(--roxo-claro));color:#fff;box-shadow:var(--sombra)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-o{background:#fff;color:var(--roxo);border:2px solid var(--roxo)}
+.btn-o:hover{background:var(--roxo);color:#fff}
+.btn-z{background:#25d366;color:#fff}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:24px;font-weight:800;color:var(--roxo)}
+.menu{display:flex;gap:22px;font-weight:600;font-size:15px}
+.menu a:hover{color:var(--roxo)}
+.burger{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--roxo)}
+@media(max-width:900px){
+  .menu{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;
+    padding:16px 20px;gap:14px;border-bottom:1px solid var(--borda)}
+  .menu.open{display:flex}
+  .burger{display:block}
+  .nav .btn{display:none}
+}
+
+/* HERO */
+.hero{padding:60px 0;background:radial-gradient(900px 400px at 10% 0%,#f6ecff,transparent),var(--creme)}
+.hero-g{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.tag{display:inline-block;background:#f3e8ff;color:var(--roxo);padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.1;margin:14px 0}
+.hero p.sub{font-size:18px;color:var(--suave);max-width:520px}
+.acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+.stats b{display:block;font-size:26px;color:var(--roxo);font-family:'Baloo 2'}
+.stats span{font-size:13px;color:var(--suave)}
+.hero-img{position:relative;max-width:100%;width:100%}
+.hero-img img{border-radius:26px;box-shadow:var(--sombra);aspect-ratio:1;object-fit:cover;object-position:center;max-height:360px;width:100%}
+.preco-flut{position:absolute;bottom:18px;left:-14px;background:#fff;padding:12px 18px;border-radius:16px;box-shadow:var(--sombra)}
+.preco-flut b{color:var(--roxo)}
+.preco-flut small{display:block;color:var(--suave)}
+@media(max-width:860px){.hero-g{grid-template-columns:1fr}}
+
+/* SECOES */
+section{padding:66px 0}
+.cab{text-align:center;max-width:620px;margin:0 auto 38px}
+.cab .tag{margin-bottom:10px}
+.cab h2{font-size:clamp(26px,4vw,38px)}
+.cab p{color:var(--suave);margin-top:8px}
+
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px}
+.feat{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:22px;text-align:center}
+.feat span{font-size:30px}
+.feat h3{margin:8px 0 4px;font-size:18px}
+.feat p{color:var(--suave);font-size:14px}
+
+/* FILTROS + CARDS */
+.filtros{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+.chip{border:1px solid var(--borda);background:#fff;color:var(--suave);padding:8px 18px;border-radius:999px;
+  cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;transition:.2s}
+.chip.on{background:var(--roxo);color:#fff;border-color:var(--roxo)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;
+  display:flex;flex-direction:column;transition:.22s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+.card .foto{position:relative}
+.card .foto img{height:172px;width:100%;object-fit:cover}
+.selo{position:absolute;top:10px;left:10px;background:var(--rosa);color:#fff;font-size:11px;
+  font-weight:700;padding:4px 10px;border-radius:999px}
+.card .corpo{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:18px}
+.card p{font-size:14px;color:var(--suave);flex:1}
+.linha{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.preco{font-weight:800;color:var(--roxo);font-size:18px;font-family:'Baloo 2'}
+.preco small{display:block;font-size:11px;color:var(--suave);font-weight:600;font-family:'Nunito'}
+.riscado{text-decoration:line-through;color:var(--suave);font-size:14px;margin-right:6px;font-weight:600}
+
+/* MONTE SEU AÇAI */
+.monte{background:#fff;border:1px solid var(--borda);border-radius:26px;padding:8px 32px 32px;box-shadow:var(--sombra)}
+.passo{padding:26px 0;border-bottom:1px dashed var(--borda)}
+.passo:last-of-type{border-bottom:0;padding-bottom:8px}
+.passo-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.passo-num{width:36px;height:36px;min-width:36px;border-radius:50%;background:linear-gradient(135deg,var(--roxo),var(--rosa));
+  color:#fff;display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;font-size:15px;
+  box-shadow:0 4px 12px rgba(91,45,142,.3)}
+.passo h3{font-size:18px;display:flex;align-items:center;gap:8px;line-height:1.3}
+.passo-sub{font-size:13px;color:var(--suave);margin-top:3px}
+.passo-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--suave);background:#f5f0fa;
+  border:1px solid var(--borda);padding:4px 10px;border-radius:999px;white-space:nowrap;align-self:flex-start}
+
+.opts{display:flex;gap:10px;flex-wrap:wrap;padding-left:50px}
+.opt{position:relative;border:1.5px solid var(--borda);background:#fff;border-radius:14px;padding:10px 16px;cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:14px;color:var(--texto);transition:.2s cubic-bezier(.34,.1,.64,1);
+  display:inline-flex;align-items:center;gap:9px}
+.opt:hover{border-color:var(--roxo-claro);transform:translateY(-2px);box-shadow:0 8px 16px rgba(91,45,142,.14)}
+.opt .preco-mini{font-size:11.5px;font-weight:700;color:var(--suave);background:#f5f0fa;padding:2px 8px;border-radius:999px}
+.opt.on{background:linear-gradient(135deg,#f3e8ff,#fdeaf3);border-color:var(--roxo);color:var(--roxo);
+  box-shadow:0 6px 16px rgba(91,45,142,.2);padding-left:12px}
+.opt.on .preco-mini{color:var(--roxo);background:#fff}
+.opt-check{display:none;width:17px;height:17px;border-radius:50%;background:var(--roxo);color:#fff;
+  font-size:10px;font-weight:800;align-items:center;justify-content:center;flex-shrink:0}
+.opt.on .opt-check{display:inline-flex}
+
+.obs-wrap{padding-left:50px}
+.obs{width:100%;border:1.5px solid var(--borda);border-radius:14px;padding:13px 14px;font-family:inherit;
+  resize:vertical;min-height:80px;font-size:14px;transition:.2s}
+.obs:focus{outline:none;border-color:var(--roxo-claro);box-shadow:0 0 0 4px rgba(139,92,246,.12)}
+
+.total{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:linear-gradient(135deg,#f7f0ff,#fdf0f7);border-radius:18px;padding:20px 24px;margin-top:22px;
+  border:1px solid var(--borda)}
+.total-info small{color:var(--suave);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:11.5px}
+.total b{display:block;font-size:30px;color:var(--roxo);font-family:'Baloo 2'}
+.total .btn-z{background:linear-gradient(135deg,#25d366,#1fb955);padding:14px 26px;font-size:15.5px;
+  box-shadow:0 8px 20px rgba(37,211,102,.35)}
+.ico-zap{display:inline-flex}
+
+/* ADICIONAIS */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.bloco{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:20px}
+.bloco h3{font-size:17px;margin-bottom:12px}
+.bloco li{list-style:none;display:flex;justify-content:space-between;padding:6px 0;
+  border-bottom:1px dashed var(--borda);font-size:14px}
+.bloco li:last-child{border:0}
+.bloco li span{color:var(--roxo);font-weight:700}
+
+/* SOBRE */
+.sobre{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sobre-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sobre-fotos img{border-radius:18px;height:230px;object-fit:cover;box-shadow:var(--sombra)}
+.checks{list-style:none;margin-top:16px;display:grid;gap:8px}
+.checks li::before{content:"✓ ";color:var(--rosa);font-weight:800}
+@media(max-width:860px){.sobre{grid-template-columns:1fr}}
+
+/* DEPOIMENTOS */
+.deps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.dep{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:22px}
+.dep p{font-style:italic;color:var(--suave)}
+.dep .quem{display:flex;align-items:center;gap:10px;margin-top:14px;font-weight:700}
+.av{width:38px;height:38px;border-radius:50%;background:var(--roxo);color:#fff;display:grid;place-items:center}
+
+/* HORARIOS */
+.horarios{max-width:520px;margin:0 auto;background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:24px}
+.horarios li{list-style:none;display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--borda)}
+.horarios li:last-child{border:0}
+
+/* FOOTER */
+footer{background:var(--roxo);color:#fff;padding:48px 0 24px}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+footer h4{font-family:'Baloo 2';font-size:19px;margin-bottom:10px}
+footer p,footer a{color:#e9d9ff;font-size:14px}
+footer a:hover{color:#fff}
+.copy{text-align:center;margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:13px;color:#d9c4f5}
+
+/* WHATSAPP FLUTUANTE */
+.zap{position:fixed;right:18px;bottom:18px;z-index:99;background:#25d366;color:#fff;width:58px;height:58px;
+  border-radius:50%;display:grid;place-items:center;font-size:28px;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.zap:hover{transform:scale(1.07)}
+
+/* TABELA DE PREÇOS */
+.tabela-container{overflow-x:auto;margin-top:20px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--raio);overflow:hidden;box-shadow:var(--sombra)}
+table th{background:linear-gradient(135deg,var(--roxo),var(--roxo-claro));color:#fff;padding:16px;text-align:left;font-weight:700}
+table td{padding:14px 16px;border-bottom:1px solid var(--borda);font-size:14px}
+table tr:hover{background:#f9f5ff}
+table tr:last-child td{border-bottom:0}
+.price-tag{background:#f3e8ff;color:var(--roxo);padding:6px 12px;border-radius:8px;font-weight:700;display:inline-block}
+.item-list{list-style:none;display:grid;gap:8px}
+.item-list li{display:flex;justify-content:space-between;align-items:center;padding:8px;background:#faf5ff;border-radius:8px}
+.item-list li span{color:var(--roxo);font-weight:700}
+
+/* ===== EFEITOS PIKAS ===== */
+
+/* 1. Animação de entrada fade-in */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+section{animation:fadeInUp .8s ease-out}
+
+/* 2. Efeito glow no logo */
+@keyframes glow{0%{text-shadow:0 0 10px rgba(139,92,246,.3)}50%{text-shadow:0 0 20px rgba(139,92,246,.6)}100%{text-shadow:0 0 10px rgba(139,92,246,.3)}}
+.logo{animation:glow 3s ease-in-out infinite}
+
+/* 3. Hover com escala e brilho */
+.btn-p{transition:all .3s cubic-bezier(.34,.1,.64,1);box-shadow:0 4px 15px rgba(91,45,142,.2)}
+.btn-p:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 25px rgba(139,92,246,.4)}
+
+/* 4. Botão WhatsApp com pulse */
+@keyframes pulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(37,211,102,.7)}70%{box-shadow:0 0 0 10px rgba(37,211,102,0)}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.zap{animation:pulse 2s infinite;transition:all .3s}
+.zap:hover{animation:none;box-shadow:0 8px 22px rgba(37,211,102,.5)}
+
+/* 5. Cards com efeito 3D ao hover */
+.card{transform:perspective(1000px);transition:all .4s cubic-bezier(.34,.1,.64,1)}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(91,45,142,.2)}
+
+/* 6. Efeito de gradiente animado nos cards */
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.card .foto{background:linear-gradient(90deg,#f0f0f0,#e0e0e0,#f0f0f0);background-size:200% 200%;animation:shimmer 2s infinite}
+
+/* 7. Tags com efeito de aparição */
+@keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.tag{animation:popIn .5s cubic-bezier(.34,.1,.64,1)}
+
+/* 8. Hover flutuante nos blocos de adicionais */
+.bloco{transition:all .3s ease;position:relative}
+.bloco:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(91,45,142,.15)}
+
+/* 9. Chips com efeito de ripple */
+@keyframes ripple{0%{transform:scale(0);opacity:1}100%{transform:scale(4);opacity:0}}
+.chip{position:relative;overflow:hidden}
+.chip::after{content:'';position:absolute;width:20px;height:20px;background:rgba(255,255,255,.5);border-radius:50%;opacity:0}
+.chip:active::after{animation:ripple .6s ease-out}
+
+/* 10. Efeito glassmorphism na header */
+header{background:rgba(255,255,255,.85) !important;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2)}
+
+/* 11. Animação de texto flutuante */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{animation:float 3s ease-in-out infinite}
+
+/* 12. Efeito de brilho nos botões ao hover */
+.btn{position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
+.btn:hover::before{left:100%}
+
+/* 13. (mesclado nas regras .opt principais acima) */
+
+/* 14. Efeito underline animado nos links */
+.menu a{position:relative;padding-bottom:2px}
+.menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--roxo),var(--rosa));transition:width .3s}
+.menu a:hover::after{width:100%}
+
+/* 15. Animação de rotação suave nas imagens */
+.hero-img img{transition:all .4s ease}
+.hero-img img:hover{transform:scale(1.05)}
+
+/* 16. Efeito de fade no rodapé */
+footer{background:linear-gradient(135deg,#5b2d8e,#8b5cf6);position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.05),transparent);animation:float 20s infinite}
+
+/* 17. Transição suave da tabela */
+table tr{transition:all .3s}
+table tr:hover{background:#f3e8ff;transform:scaleY(1.02)}
+
+/* 18. Animação ao carregar a página */
+body{animation:pageLoad .6s ease-out}
+@keyframes pageLoad{from{opacity:.8;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
+
+/* ===== + EFEITOS EXTRAS  ===== */
+
+/* 19. Bounce animation */
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.stats div{animation:bounce 2.5s ease-in-out infinite;animation-delay:calc(var(--i,0)*0.2s)}
+
+/* 20. Gradiente animado nos botões */
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.btn-p{background:linear-gradient(135deg,var(--roxo),var(--roxo-claro),var(--rosa),var(--roxo));background-size:200% 200%;animation:gradientShift 3s ease infinite}
+
+/* 21. Wiggle effect - REMOVIDO */
+
+/* 22. Slide in from left */
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}
+.hero-g > div:first-child{animation:slideInLeft .8s ease-out}
+
+/* 23. Slide in from right */
+@keyframes slideInRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+.hero-img{animation:slideInRight .8s ease-out .2s both}
+
+/* 24. Zoom bounce no botão WhatsApp */
+@keyframes zoomBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.btn-z:hover{animation:zoomBounce .4s ease-in-out}
+
+/* 25. Efeito de borda animada */
+@keyframes borderGlow{0%{box-shadow:0 0 5px rgba(139,92,246,.3)}50%{box-shadow:0 0 20px rgba(139,92,246,.7)}100%{box-shadow:0 0 5px rgba(139,92,246,.3)}}
+.card{animation:borderGlow 3s ease-in-out infinite}
+
+/* 26. Spin animation - REMOVIDO */
+
+/* 27. Efeito de skew no hover */
+.feat{transition:all .3s cubic-bezier(.34,.1,.64,1);transform:perspective(1000px)}
+.feat:hover{transform:skewY(-2deg) translateY(-5px);box-shadow:0 15px 35px rgba(91,45,142,.2)}
+
+/* 28. Text glow effect */
+@keyframes textGlow{0%,100%{text-shadow:0 0 10px rgba(139,92,246,.4)}50%{text-shadow:0 0 20px rgba(139,92,246,.8)}}
+.hero h1{animation:textGlow 2s ease-in-out infinite}
+
+/* 29. Efeito de flip 3D - REMOVIDO */
+
+/* 30. Efeito de pulse nos elementos interativos */
+@keyframes pulsate{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+.opt:active{animation:pulsate .3s ease}
+
+/* 31. Sombra dinâmica ao hover */
+.monte{transition:box-shadow .3s,transform .3s}
+.monte:hover{box-shadow:0 25px 50px rgba(91,45,142,.25);transform:translateY(-2px)}
+
+/* 32. Efeito de fade em múltiplos elementos */
+@keyframes staggerFade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.grid .card{animation:staggerFade .6s ease-out forwards}
+.grid .card:nth-child(1){animation-delay:0.1s}
+.grid .card:nth-child(2){animation-delay:0.2s}
+.grid .card:nth-child(3){animation-delay:0.3s}
+.grid .card:nth-child(n+4){animation-delay:0.4s}
+
+/* 33. Hover effect com color shift */
+.chip:hover{background:linear-gradient(135deg,var(--roxo-claro),var(--rosa));color:#fff}
+
+/* 34. Efeito de draw animation */
+@keyframes drawLine{0%{width:0}100%{width:100%}}
+.menu a::after{animation:drawLine .4s ease-out}
+
+/* 35. Rotate animation - REMOVIDO */
+
+/* 36. Efeito de shadow flutuante */
+@keyframes shadowFloat{0%,100%{box-shadow:0 5px 15px rgba(0,0,0,.1)}50%{box-shadow:0 15px 30px rgba(0,0,0,.2)}}
+.card:hover{animation:shadowFloat .8s ease-in-out}
+
+/* 37. Efeito de border gradient */
+@keyframes borderGradient{0%{border-color:var(--roxo)}50%{border-color:var(--rosa)}100%{border-color:var(--roxo)}}
+.bloco{border:2px solid transparent;background:linear-gradient(#fff,#fff),linear-gradient(135deg,var(--roxo),var(--rosa));background-clip:padding-box,border-box;background-origin:padding-box,border-box}
+
+/* 38. Efeito de ripple ao clicar */
+.btn,a{position:relative;overflow:hidden}
+.btn::after,a::after{content:'';position:absolute;width:100px;height:100px;background:radial-gradient(circle,rgba(255,255,255,.8),transparent);border-radius:50%;opacity:0;pointer-events:none;transform:scale(0)}
+
+/* 39. Efeito de neon glow */
+@keyframes neonGlow{0%,100%{text-shadow:0 0 10px #25d366,0 0 20px #25d366,0 0 30px #25d366,0 0 40px #25d366}50%{text-shadow:0 0 20px #25d366,0 0 30px #25d366,0 0 40px #25d366,0 0 50px #25d366}}
+.zap{animation:neonGlow 1.5s ease-in-out infinite}
+
+/* 40. Efeito de parallax simples com CSS */
+.hero{background-attachment:fixed;background-position:center}
+
+/* 41. Efeito de transform hover com múltiplas camadas */
+.preco{transition:all .3s cubic-bezier(.34,.1,.64,1)}
+.preco:hover{transform:scale(1.2)}
+
+/* 42. Efeito de slide e fade simultâneos */
+@keyframes slideFade{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.passo{animation:slideFade .5s ease-out forwards;animation-delay:calc(var(--index,0)*0.15s)}
+
+/* 43. Efeito de zoom in ao hover */
+.foto{overflow:hidden;border-radius:12px}
+.foto img{transition:transform .5s cubic-bezier(.34,.1,.64,1)}
+.card:hover .foto img{transform:scale(1.15)}
+
+/* 44. Efeito de brilho nos preços */
+@keyframes priceShine{0%{background-position:100%}100%{background-position:-100%}}
+.price-tag{background:linear-gradient(90deg,#f3e8ff,#fff,#f3e8ff);background-size:200% 200%;animation:priceShine 3s infinite}
+
+/* 45. Efeito de float nos blocos */
+@keyframes floatBlock{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+.bloco{animation:floatBlock 3.5s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Gelatto &amp; Açaí</div>
+    <nav class="menu" id="menu">
+      <a href="#monte">Monte seu Açaí</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#horarios">Horários</a>
+    </nav>
+    <a class="btn btn-p btn-sm" id="zapTopo" href="#">Pedir pelo WhatsApp</a>
+    <button class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-g">
+    <div>
+      <span class="tag">Feito na hora 🍓</span>
+      <h1>O sabor que deixa seu dia mais gostoso 🍦</h1>
+      <p class="sub">Monte seu açaí, escolha seu sorvete e aproveite seus sabores favoritos do seu jeito.</p>
+      <div class="acoes">
+        <a class="btn btn-z zapLink" href="#">Pedir pelo WhatsApp</a>
+      </div>
+      <div class="stats">
+        <div><b>+30</b><span>sabores e opções</span></div>
+        <div><b>20</b><span>adicionais</span></div>
+        <div><b>40min</b><span>entrega média</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://scoop-and-sip-site.lovable.app/assets/hero-acai-8xKEbXAE.jpg" alt="Copo de açaí cremoso com morango, banana, kiwi, granola e calda de chocolate">
+      <div class="preco-flut"><small>Açaí 300ml</small><b>R$ 15,90</b></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MONTE SEU ACAI -->
+<section id="monte" style="background:#faf5ff">
+  <div class="wrap">
+    <div class="cab">
+      <span class="tag">Personalize</span>
+      <h2>Monte seu Açaí 💜</h2>
+      <p>Escolha o tamanho, marque os adicionais e as caldas que quiser. O total é calculado na hora.</p>
+    </div>
+    <div class="monte">
+      <div id="passosMonte"></div>
+      <div class="total">
+        <div class="total-info"><small>Total do seu açaí</small><b id="total">R$ 15,90</b></div>
+        <button class="btn btn-z" id="enviarAcai">
+          <span class="ico-zap">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.55 3.71-8.24 8.26-8.24M8.53 6.85c-.17 0-.45.06-.68.32-.23.25-.9.86-.9 2.1s.92 2.44 1.05 2.61c.13.17 1.8 2.87 4.45 3.92 2.2.87 2.65.7 3.13.65.48-.04 1.55-.63 1.77-1.24s.22-1.13.15-1.24c-.06-.11-.24-.17-.5-.3-.27-.13-1.56-.77-1.8-.86-.24-.09-.42-.13-.6.13-.17.26-.68.86-.84.04-.16.19-.32.2-.58.07-.27-.13-1.12-.42-2.14-1.34-.79-.71-1.32-1.58-1.48-1.84-.15-.27-.02-.42.12-.54.12-.13.27-.32.4-.48.13-.16.17-.27.26-.45.09-.19.04-.35-.02-.48-.06-.13-.6-1.48-.83-2.02-.22-.53-.44-.46-.6-.47z"/></svg>
+          </span>
+          Enviar pedido no WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="wrap sobre">
+    <div class="sobre-fotos">
+      <img src="https://scoop-and-sip-site.lovable.app/assets/loja-DOayw_1k.jpg" alt="Interior da loja Gelatto & Açaí com balcão de atendimento">
+      <img src="https://scoop-and-sip-site.lovable.app/assets/adicionais-CWZgYvbf.jpg" alt="Potinhos com granola, morango, banana e chocolate para adicionais">
+    </div>
+    <div>
+      <span class="tag">Sobre nós</span>
+      <h2 style="font-size:34px;margin:12px 0">Um pouco sobre nós</h2>
+      <p style="color:var(--suave)">Na Gelatto &amp; Açaí, acreditamos que pequenos momentos podem ficar ainda melhores com um bom sorvete ou um açaí do jeito que você gosta. Trabalhamos para oferecer produtos saborosos, ingredientes de qualidade e uma experiência especial em cada pedido.</p>
+      <ul class="checks">
+        <li>Açaí batido diariamente</li>
+        <li>Frutas cortadas na hora</li>
+        <li>Sorvetes de fabricação própria</li>
+        <li>Atendimento rápido no WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- HORARIOS -->
+<section id="horarios">
+  <div class="wrap">
+    <div class="cab"><span class="tag">Horários</span><h2>Funcionamento</h2></div>
+    <ul class="horarios">
+      <li><span>Segunda a Quinta</span><b>12h — 22h</b></li>
+      <li><span>Sexta</span><b>12h — 23h</b></li>
+      <li><span>Sábado</span><b>11h — 23h</b></li>
+      <li><span>Domingo</span><b>13h — 22h</b></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <h4>Gelatto &amp; Açaí</h4>
+      <p>Açaí, sorvetes, milk-shakes e sobremesas geladas feitas com carinho em São José do Rio Preto - SP.</p>
+    </div>
+    <div>
+      <h4>Navegue</h4>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (17) 99999-9999<br>São José do Rio Preto - SP<br>Retirada e entrega</p>
+    </div>
+  </div>
+  <div class="wrap copy">© <span id="ano"></span> Gelatto &amp; Açaí. Todos os direitos reservados.</div>
+</footer>
+
+<a class="zap zapLink" href="#" aria-label="Pedir pelo WhatsApp">💬</a>
+
+<script>
+/* ====== CONFIG ====== */
+const FONE = "5517999999999"; // troque pelo seu número
+const IMG = "https://scoop-and-sip-site.lovable.app/images/produtos/";
+const brl = n => "R$ " + n.toFixed(2).replace(".", ",");
+const zap = txt => "https://wa.me/" + FONE + "?text=" + encodeURIComponent(txt);
+
+const produtos = [
+  {id:1, nome:"Açaí Tradicional", categoria:"Açaí", preco:15.90, img:"acai-tradicional.jpg", desc:"Açaí 300ml com granola"}
+];
+
+const combos = [];
+
+// 3 tipos de massa de açaí
+const massas = [
+  {nome:"Açaí Tradicional", preco:0, desc:"O clássico, puro e cremoso"},
+  {nome:"Açaí Zero Açúcar", preco:0, desc:"Sem adição de açúcar"},
+  {nome:"Açaí com Morango", preco:2.00, desc:"Batido com morango na hora"}
+];
+
+// Frutas, caldas e acompanhamentos
+const adicionais = [
+  {categoria:"Frutas", itens:[{nome:"Banana", preco:1.00}, {nome:"Morango", preco:1.50}, {nome:"Kiwi", preco:2.50}, {nome:"Blueberry", preco:2.00}, {nome:"Manga", preco:1.50}]},
+  {categoria:"Caldas", itens:[{nome:"Calda de Chocolate", preco:1.50}, {nome:"Calda de Morango", preco:1.50}, {nome:"Calda de Caramelo", preco:1.50}, {nome:"Leite Condensado", preco:1.50}]},
+  {categoria:"Acompanhamentos", itens:[{nome:"Granola", preco:2.00}, {nome:"Granola Premium", preco:3.00}, {nome:"Aveia", preco:1.00}, {nome:"Amendoim", preco:2.00}, {nome:"Castanha de Caju", preco:2.50}, {nome:"Chia", preco:1.00}, {nome:"Coco Ralado", preco:1.00}, {nome:"Sorvete Extra", preco:3.00}, {nome:"Brigadeiro", preco:2.00}]}
+];
+
+const tamanhos = [
+  {nome:"Pequeno (300ml)", preco:15.90, desc:"Perfeito para uma pessoa"},
+  {nome:"Médio (400ml)", preco:19.90, desc:"Mais cremoso e farto"},
+  {nome:"Grande (500ml)", preco:24.90, desc:"Para os mais gulosos"},
+  {nome:"Family (800ml)", preco:39.90, desc:"Para compartilhar em família"}
+];
+
+const depoimentos = [
+  {texto:"Adorei! Muito gostoso.", quem:"Maria S."}
+];
+
+/* ====== RENDERIZAÇÃO ====== */
+document.getElementById('ano').textContent = new Date().getFullYear();
+
+function renderProdutos() {
+  const grid = document.getElementById('gradeProdutos');
+  if (!grid) return;
+  grid.innerHTML = produtos.map(p => `
+    <div class="card">
+      <div class="foto"><img src="${IMG}${p.img}" alt="${p.nome}"></div>
+      <div class="corpo">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <div class="linha">
+          <div class="preco">${brl(p.preco)}</div>
+          <button class="btn btn-o btn-sm">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFiltros() {
+  const el = document.getElementById('filtros');
+  if (!el) return;
+  const cats = [...new Set(produtos.map(p => p.categoria))];
+  el.innerHTML = 
+    `<button class="chip on">Tudo</button>` +
+    cats.map(c => `<button class="chip">${c}</button>`).join('');
+}
+
+function renderTabelaTamanhos() {
+  const tabelaBody = document.getElementById('tabelaTamanhos');
+  if (!tabelaBody) return;
+  tabelaBody.innerHTML = tamanhos.map(t => `
+    <tr>
+      <td><strong>${t.nome}</strong></td>
+      <td><span class="price-tag">${brl(t.preco)}</span></td>
+      <td>${t.desc}</td>
+    </tr>
+  `).join('');
+}
+
+function renderAdicionaisTabela() {
+  const container = document.getElementById('adicionaisTabela');
+  if (!container) return;
+  
+  container.innerHTML = adicionais.map(cat => `
+    <div class="bloco">
+      <h3>${cat.categoria}</h3>
+      <ul class="item-list">
+        ${cat.itens.map(item => `<li>${item.nome}<span>${brl(item.preco)}</span></li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+
+function opcaoHTML(nome, preco, selecionada, gratisLabel) {
+  const precoTxt = preco > 0 ? `+${brl(preco)}` : (gratisLabel || 'grátis');
+  return `<button class="opt${selecionada ? ' on' : ''}" data-preco="${preco}" data-nome="${nome}">
+    <span class="opt-check">✓</span>${nome}<span class="preco-mini">${precoTxt}</span>
+  </button>`;
+}
+
+function passoHTML(numero, icone, titulo, subtitulo, tag, conteudoHTML) {
+  return `<div class="passo">
+    <div class="passo-head">
+      <div class="passo-num">${numero}</div>
+      <div>
+        <h3>${icone} ${titulo}</h3>
+        ${subtitulo ? `<div class="passo-sub">${subtitulo}</div>` : ''}
+      </div>
+      ${tag ? `<span class="passo-tag">${tag}</span>` : ''}
+    </div>
+    ${conteudoHTML}
+  </div>`;
+}
+
+function renderPassosMonte() {
+  let n = 1;
+  let html = '';
+
+  html += passoHTML(n++, '📏', 'Escolha o tamanho', 'Do docinho pra um até a vasilha de família', 'escolha 1',
+    `<div class="opts" id="tamanhos">${tamanhos.map((t, i) => opcaoHTML(t.nome, t.preco, i === 0)).join('')}</div>`);
+
+  html += passoHTML(n++, '🍇', 'Escolha a massa do açaí', 'A base do seu copo', 'escolha 1',
+    `<div class="opts" data-tipo="single">${massas.map((m, i) => opcaoHTML(m.nome, m.preco, i === 0, 'grátis')).join('')}</div>`);
+
+  const iconesGrupo = {'Frutas':'🍓', 'Caldas':'🍫', 'Acompanhamentos':'🥣'};
+  adicionais.forEach(grupo => {
+    html += passoHTML(n++, iconesGrupo[grupo.categoria] || '✨', grupo.categoria, null, 'à vontade',
+      `<div class="opts" data-tipo="multi">${grupo.itens.map(item => opcaoHTML(item.nome, item.preco, false)).join('')}</div>`);
+  });
+
+  html += passoHTML(n++, '📝', 'Observação', 'Algum pedido especial? É só escrever', 'opcional',
+    `<div class="obs-wrap"><textarea class="obs" id="obs" placeholder="Ex.: sem granola, calda à parte, ponto do sorvete..."></textarea></div>`);
+
+  document.getElementById('passosMonte').innerHTML = html;
+}
+
+function atualizarTotal() {
+  let total = 0;
+  document.querySelectorAll('.monte .opts .opt.on').forEach(b => total += parseFloat(b.dataset.preco || 0));
+  const totalEl = document.getElementById('total');
+  if (totalEl) totalEl.textContent = brl(total);
+}
+
+// Seleção dos passos: tamanho e massa são únicos; frutas/caldas/acompanhamentos são múltiplos
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.monte .opt');
+  if (!btn) return;
+  const opts = btn.closest('.opts');
+  if (!opts) return;
+  const unico = opts.id === 'tamanhos' || opts.dataset.tipo === 'single';
+  if (unico) {
+    opts.querySelectorAll('.opt').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  } else {
+    btn.classList.toggle('on');
+  }
+  atualizarTotal();
+});
+
+function montarMensagemPedido() {
+  const tamanho = document.querySelector('#tamanhos .opt.on')?.dataset.nome || '';
+  let linhas = [`Olá! Quero pedir um açaí:`, `- Tamanho: ${tamanho}`];
+  document.querySelectorAll('#passosMonte .passo').forEach(p => {
+    const opts = p.querySelector('.opts');
+    if (!opts || opts.id === 'tamanhos') return;
+    const titulo = p.querySelector('h3').textContent.replace(/^\S+\s/, '').trim();
+    const selecionados = [...p.querySelectorAll('.opt.on')].map(b => b.dataset.nome);
+    if (selecionados.length) linhas.push(`- ${titulo}: ${selecionados.join(', ')}`);
+  });
+  const obs = document.getElementById('obs')?.value.trim();
+  if (obs) linhas.push(`- Observação: ${obs}`);
+  const totalEl = document.getElementById('total');
+  linhas.push(`Total: ${totalEl ? totalEl.textContent : ''}`);
+  return linhas.join('\n');
+}
+
+function renderCombos() {
+  const el = document.getElementById('gradeCombos');
+  if (!el) return;
+  el.innerHTML = combos.length ? 
+    combos.map(c => `<div class="card"><div class="corpo"><h3>${c.nome}</h3><div class="preco">${brl(c.preco)}</div></div></div>`).join('') :
+    '<p style="text-align:center;color:var(--suave)">Nenhum combo disponível no momento.</p>';
+}
+
+function renderDepoimentos() {
+  const el = document.getElementById('deps');
+  if (!el) return;
+  el.innerHTML = depoimentos.map(d => `
+    <div class="dep">
+      <p>"${d.texto}"</p>
+      <div class="quem"><div class="av">${d.quem[0]}</div>${d.quem}</div>
+    </div>
+  `).join('');
+}
+
+// Inicializar
+renderProdutos();
+renderFiltros();
+renderPassosMonte();
+renderTabelaTamanhos();
+renderAdicionaisTabela();
+renderCombos();
+renderDepoimentos();
+
+atualizarTotal();
+
+// Botão de enviar pedido do "Monte seu Açaí" com resumo da escolha
+const btnEnviarAcai = document.getElementById('enviarAcai');
+if (btnEnviarAcai) {
+  btnEnviarAcai.addEventListener('click', () => {
+    window.open(zap(montarMensagemPedido()), '_blank');
+  });
+}
+
+// Links WhatsApp
+document.querySelectorAll('.zapLink').forEach(el => {
+  el.href = zap("Olá! Gostaria de fazer um pedido. 🍦");
+});
+const zapTopo = document.getElementById('zapTopo');
+const primeiroZapLink = document.querySelector('.zapLink');
+if (zapTopo && primeiroZapLink) zapTopo.href = primeiroZapLink.href;
+
+/* ===== EFEITOS JAVASCRIPT EXTRAS ===== */
+
+// 1. Efeito de glow ao mover o mouse
+document.addEventListener('mousemove', (e) => {
+  const elements = document.querySelectorAll('.card, .bloco, .btn');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.setProperty('--mouse-x', x + 'px');
+    el.style.setProperty('--mouse-y', y + 'px');
+  });
+});
+
+// 2. Efeito de scroll reveal
+const revealElements = () => {
+  const elements = document.querySelectorAll('section, .card, .feat, .bloco');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.75) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }
+  });
+};
+
+window.addEventListener('scroll', revealElements);
+revealElements();
+
+// 3. Efeito de confetti ao clicar nos botões
+const createConfetti = (e) => {
+  const colors = ['#8b5cf6', '#e8508d', '#25d366'];
+  for (let i = 0; i < 8; i++) {
+    const confetti = document.createElement('div');
+    confetti.style.position = 'fixed';
+    confetti.style.left = e.clientX + 'px';
+    confetti.style.top = e.clientY + 'px';
+    confetti.style.width = '8px';
+    confetti.style.height = '8px';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.borderRadius = '50%';
+    confetti.style.pointerEvents = 'none';
+    confetti.style.zIndex = '9999';
+    confetti.style.animation = `confettiFall ${1.5 + Math.random() * 1}s ease-out forwards`;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 2500);
+  }
+};
+
+// Adicionar estilo da animação de confetti
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes confettiFall {
+    to {
+      transform: translateY(300px) translateX(${Math.random() * 100 - 50}px);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// Aplicar confetti aos botões
+document.querySelectorAll('.btn-z, .btn-p').forEach(btn => {
+  btn.addEventListener('click', createConfetti);
+});
+
+// 4. Efeito de tipagem no título
+const typeWriter = () => {
+  const h1 = document.querySelector('.hero h1');
+  const text = h1.textContent;
+  h1.textContent = '';
+  let i = 0;
+  const type = () => {
+    if (i < text.length) {
+      h1.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  };
+  type();
+};
+window.addEventListener('load', typeWriter);
+
+// 5. Efeito de hover com tilt 3D
+const tilt = (e) => {
+  const card = e.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  card.style.transform = `scale(1.02)`;
+};
+
+const resetTilt = (e) => {
+  e.currentTarget.style.transform = '';
+};
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', tilt);
+  card.addEventListener('mouseleave', resetTilt);
+});
+
+// 6. Efeito de contador animado nos stats
+const animateCounters = () => {
+  const stats = document.querySelectorAll('.stats b');
+  stats.forEach(stat => {
+    const target = parseInt(stat.textContent.replace(/\D/g, ''));
+    let current = 0;
+    const increment = target / 30;
+    const counter = () => {
+      if (current < target) {
+        current += increment;
+        stat.textContent = Math.ceil(current) + (stat.textContent.match(/\D/g) || []).join('');
+        setTimeout(counter, 30);
+      }
+    };
+    counter();
+  });
+};
+window.addEventListener('load', animateCounters);
+
+// 7. Efeito de hover com brilho nos cards
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.backgroundImage = `radial-gradient(circle at ${x}px ${y}px, rgba(139,92,246,0.1), transparent)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.backgroundImage = '';
+  });
+});
+
+// 8. Efeito de parallax ao scroll
+window.addEventListener('scroll', () => {
+  const parallaxElements = document.querySelectorAll('.hero');
+  parallaxElements.forEach(el => {
+    el.style.backgroundPosition = `center ${window.scrollY * 0.5}px`;
+  });
+});
+
+// 9. Adicionar delay de animação aos cards
+document.querySelectorAll('.card').forEach((card, index) => {
+  card.style.animationDelay = (index * 0.1) + 's';
+});
+
+// 10. Efeito de pulsação ao passar o mouse
+document.querySelectorAll('.stats div').forEach((stat, i) => {
+  stat.style.setProperty('--i', i);
+});
+</script>
+</body>
+</html>
